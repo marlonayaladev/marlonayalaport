@@ -1,40 +1,51 @@
+// Opcional: Script para el manejo del formulario de contacto
+// Este script usa la API Fetch para enviar el formulario de forma asíncrona (sin recargar la página)
+// hacia Formspree, que espera un formato JSON.
+
 const form = document.querySelector('.contact form');
 
-form.addEventListener('submit', (e) => {
-    e.preventDefault(); // Esto detiene el envío HTML por defecto
+// Solo ejecuta esto si el formulario existe en la página
+if (form) {
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault(); // Detiene el envío HTML por defecto y la recarga de la página
 
-    // Crea un objeto FormData con los datos del formulario
-    const formData = new FormData(e.target);
-    // Convierte el FormData a un objeto JSON simple
-    const jsonData = {};
-    formData.forEach((value, key) => {
-        jsonData[key] = value;
-    });
+        const formData = new FormData(e.target);
+        const jsonData = {};
+        // Convierte FormData a un objeto JSON, usando los 'name' de tus inputs
+        formData.forEach((value, key) => {
+            jsonData[key] = value;
+        });
 
-    fetch(form.action, {
-        method: "POST",
-        headers: {
-            'Content-Type': 'application/json', // ¡IMPORTANTE! Esto le dice a Formspree que envías JSON
-            'Accept': 'application/json'
-        },
-        body: JSON.stringify(jsonData) // Convierte el objeto JSON a una cadena JSON
-    })
-    .then(response => {
-        if (response.ok) {
-            alert("¡Gracias por tu mensaje! Pronto me pondré en contacto contigo.");
-            form.reset();
-        } else {
-            response.json().then(data => {
-                if (Object.hasOwnProperty.call(data, 'errors')) {
-                    alert(data["errors"].map(error => error["message"]).join(", "));
+        try {
+            const response = await fetch(form.action, {
+                method: "POST",
+                // ¡IMPORTANTE! Estos headers le indican a Formspree que estás enviando JSON
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(jsonData) // Convierte tu objeto JavaScript a una cadena JSON
+            });
+
+            if (response.ok) {
+                alert("¡Gracias por tu mensaje! Pronto me pondré en contacto contigo.");
+                form.reset(); // Limpia los campos del formulario
+            } else {
+                // Si la respuesta no es OK (ej. error 4xx o 5xx), intenta leer el mensaje de error de Formspree
+                const data = await response.json();
+                if (data && data.errors) {
+                    alert("Oops! Hubo un problema: " + data.errors.map(error => error.message).join(", "));
                 } else {
                     alert("Oops! Hubo un problema al enviar tu formulario.");
                 }
-            });
+            }
+        } catch (error) {
+            // Este catch maneja errores de red o cualquier problema con la solicitud fetch
+            console.error('Error al enviar el formulario:', error);
+            alert("Hubo un error de conexión al enviar tu mensaje. Inténtalo de nuevo más tarde.");
         }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        alert("Hubo un error de conexión al enviar tu mensaje. Inténtalo de nuevo más tarde.");
     });
-});
+}
+
+// Otros scripts de tu página (ej. para la navegación, animaciones, etc.) irían aquí debajo
+// Por ejemplo, si tienes código para el desplazamiento suave de la navegación o animaciones.
