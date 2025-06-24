@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tu Nombre | Desarrollador de Software</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+
+    <header class="header">
+        <a href="#" class="logo">Tu Nombre.</a>
+
+        <nav class="navbar">
+            <a href="#home">Home</a>
+            <a href="#about">Sobre Mí</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Proyectos</a>
+            <a href="#contact">Contacto</a>
+        </nav>
+    </header>
+
+    <section class="home" id="home">
+        <div class="home-content">
+            <h1>Hola, soy Tu Nombre <i class='bx bx-party' ></i></h1>
+            <h3>Desarrollador de Software</h3>
+            <p>Apasionado por crear soluciones tecnológicas eficientes y escalables. Convierto ideas complejas en realidades funcionales y elegantes.</p>
+            <div class="btn-box">
+                <a href="#contact" class="btn">Contáctame</a>
+                <a href="assets/CV_TuNombre_Apellido.pdf" download class="btn">Descargar CV</a>
+            </div>
+        </div>
+
+        <div class="home-img">
+            <img src="assets/profile-pic.png" alt="Tu Foto de Perfil">
+        </div>
+
+        <div class="home-sci">
+            <a href="https://linkedin.com/in/tu-usuario" target="_blank"><i class='bx bxl-linkedin'></i></a>
+            <a href="https://github.com/tu-usuario" target="_blank"><i class='bx bxl-github'></i></a>
+            <a href="https://instagram.com/tu-usuario" target="_blank"><i class='bx bxl-instagram'></i></a>
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <h2 class="heading">Sobre <span>Mí</span></h2>
+        
+        <div class="about-content">
+            <div class="about-text">
+                <h4>Mi Historia</h4>
+                <p>
+                    Desde que escribí mi primera línea de código, supe que había encontrado mi pasión. Me encanta resolver problemas, optimizar procesos y, sobre todo, construir aplicaciones que la gente ame usar. Mi objetivo es unirme a un equipo donde pueda contribuir, aprender y crecer como profesional.
+                </p>
+            </div>
+            <div class="about-timeline">
+                <h4>Mi Trayectoria</h4>
+                <ul>
+                    <li><strong>2020:</strong> Inicié mi viaje en la programación con Python.</li>
+                    <li><strong>2022:</strong> Graduado del Bootcamp de Desarrollo Full-Stack.</li>
+                    <li><strong>2023:</strong> Contribuí al desarrollo de una app de e-commerce que aumentó las ventas en un 15%.</li>
+                    <li><strong>Hoy:</strong> Buscando nuevos desafíos y perfeccionando mis habilidades en la nube.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="skills" id="skills">
+        <h2 class="heading">Mis <span>Skills</span></h2>
+
+        <div class="skills-container">
+            <div class="skills-box">
+                <i class='bx bxl-react'></i>
+                <h3>Frontend</h3>
+                <p>React, JavaScript (ES6+), TypeScript, HTML5, CSS3, SASS, TailwindCSS.</p>
+            </div>
+
+            <div class="skills-box">
+                <i class='bx bxl-nodejs' ></i>
+                <h3>Backend</h3>
+                <p>Node.js, Express, Python (Django), PostgreSQL, MongoDB.</p>
+            </div>
+
+            <div class="skills-box">
+                <i class='bx bxl-docker'></i>
+                <h3>Herramientas</h3>
+                <p>Git, Docker, CI/CD, AWS (S3, EC2), Jira.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="projects" id="projects">
+        <h2 class="heading">Mis <span>Proyectos</span></h2>
+        
+        <div class="projects-container">
+            <div class="project-card">
+                <img src="assets/project1.png" alt="Imagen del Proyecto 1">
+                <div class="project-layer">
+                    <h4>E-commerce de Ropa</h4>
+                    <p>Plataforma de venta online con pasarela de pago y panel de administración.</p>
+                    <a href="https://github.com/tu-usuario/proyecto1" target="_blank"><i class='bx bx-link-external'></i></a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <img src="assets/project2.png" alt="Imagen del Proyecto 2">
+                <div class="project-layer">
+                    <h4>App del Clima</h4>
+                    <p>Aplicación que consume una API externa para mostrar el clima en tiempo real.</p>
+                    <a href="https://github.com/tu-usuario/proyecto2" target="_blank"><i class='bx bx-link-external'></i></a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <img src="assets/project3.png" alt="Imagen del Proyecto 3">
+                <div class="project-layer">
+                    <h4>Clon de Trello</h4>
+                    <p>Dashboard de gestión de tareas con funcionalidad de arrastrar y soltar (drag & drop).</p>
+                    <a href="https://github.com/tu-usuario/proyecto3" target="_blank"><i class='bx bx-link-external'></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<section class="contact" id="contact">
+    <h2 class="heading">¡Hablemos!</h2>
+    
+    <form action="https://formspree.io/f/myzjbzdl" method="POST"> 
+        <div class="input-box">
+            <input type="text" placeholder="Nombre Completo" required>
+            <input type="email" placeholder="Email" required>
+        </div>
+        <textarea name="" id="" cols="30" rows="10" placeholder="Tu Mensaje" required></textarea>
+        <input type="submit" value="Enviar Mensaje" class="btn">
+    </form>
+</section>
+    
+    <footer class="footer">
+        <div class="footer-text">
+            <p>Copyright &copy; 2025 por Tu Nombre | Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+
+    <script src="script.js"></script>
+</body>
+</html>
