@@ -30,26 +30,34 @@ window.onscroll = () => {
 const form = document.querySelector('.contact form');
 
 form.addEventListener('submit', (e) => {
-    // Evita que la página se recargue
-    e.preventDefault();
+    e.preventDefault(); // Esto es necesario para evitar la recarga de la página
 
-    // Puedes agregar una lógica para enviar el formulario vía fetch a tu endpoint de Formspree
-    // fetch(form.action, {
-    //     method: "POST",
-    //     body: new FormData(e.target),
-    //     headers: {
-    //         'Accept': 'application/json'
-    //     }
-    // }).then(response => {
-    //     if (response.ok) {
-    //         alert("¡Gracias por tu mensaje!");
-    //         form.reset();
-    //     } else {
-    //         alert("Oops! Hubo un problema al enviar tu formulario.");
-    //     }
-    // });
-
-    // Mensaje de confirmación simple si no usas backend
-    alert('¡Gracias! Tu mensaje ha sido "enviado".');
-    form.reset();
+    // Aquí es donde realmente envías los datos a Formspree usando JavaScript
+    fetch(form.action, { // form.action obtendrá la URL de tu formulario de Formspree del HTML
+        method: "POST",
+        body: new FormData(e.target), // Envía todos los datos del formulario
+        headers: {
+            'Accept': 'application/json' // Esto es una buena práctica para Formspree
+        }
+    })
+    .then(response => {
+        // Formspree enviará una respuesta indicando si fue exitoso o no
+        if (response.ok) {
+            alert("¡Gracias por tu mensaje! Pronto me pondré en contacto contigo.");
+            form.reset(); // Limpia los campos del formulario
+        } else {
+            // Si hay un error, puedes obtener más detalles de la respuesta de Formspree
+            response.json().then(data => {
+                if (Object.hasOwnProperty.call(data, 'errors')) {
+                    alert(data["errors"].map(error => error["message"]).join(", "));
+                } else {
+                    alert("Oops! Hubo un problema al enviar tu formulario.");
+                }
+            });
+        }
+    })
+    .catch(error => { // Manejo de errores de red o del fetch en sí
+        console.error('Error:', error);
+        alert("Hubo un error de conexión al enviar tu mensaje. Inténtalo de nuevo más tarde.");
+    });
 });
