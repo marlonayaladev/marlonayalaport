@@ -49,3 +49,39 @@ if (form) {
 
 // Otros scripts de tu página (ej. para la navegación, animaciones, etc.) irían aquí debajo
 // Por ejemplo, si tienes código para el desplazamiento suave de la navegación o animaciones.
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Lógica para los carruseles de las tarjetas de proyectos
+    const carousels = document.querySelectorAll('.card-carousel');
+
+    carousels.forEach(carousel => {
+        const slides = carousel.querySelectorAll('.carousel-slide');
+        const prevBtn = carousel.querySelector('.prev');
+        const nextBtn = carousel.querySelector('.next');
+        let currentSlide = 0;
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.remove('active');
+                if (i === index) {
+                    slide.classList.add('active');
+                }
+            });
+        }
+
+        prevBtn.addEventListener('click', (e) => {
+            e.stopPropagation(); // Evita que el evento se propague a elementos padres
+            currentSlide = (currentSlide > 0) ? currentSlide - 1 : slides.length - 1;
+            showSlide(currentSlide);
+        });
+
+        nextBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            currentSlide = (currentSlide < slides.length - 1) ? currentSlide + 1 : 0;
+            showSlide(currentSlide);
+        });
+
+        // Inicializa el carrusel
+        showSlide(currentSlide);
+    });
+});
