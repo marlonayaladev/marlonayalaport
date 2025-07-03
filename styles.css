@@ -33,8 +33,7 @@ body {
 
 /* Estilos de Secciones Generales */
 section {
-    min-height: 100vh;
-    padding: 10rem 9% 2rem;
+    padding: 10rem 9% 4rem; /* Más espacio abajo para separar las secciones */
 }
 
 .heading {
@@ -183,6 +182,7 @@ section {
 /* About Section */
 .about {
     background: #f7f7f7;
+    padding-bottom: 4rem; /* Más espacio abajo */
 }
 
 .about-content {
@@ -218,6 +218,59 @@ section {
     left: 0;
     color: var(--main-color);
     font-weight: bold;
+}
+
+.about-floating-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 3rem;
+    margin-bottom: 4rem;
+}
+
+.about-floating-card {
+    background: #fff;
+    border-radius: 2rem;
+    box-shadow: 0 .5rem 2rem rgba(0,0,0,0.08);
+    padding: 2.5rem 2rem;
+    min-width: 280px;
+    max-width: 340px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+}
+
+.about-floating-card:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 1.5rem 3rem rgba(0,0,0,0.12);
+}
+
+.about-floating-card h4 {
+    font-size: 1.7rem;
+    color: #333;
+    text-align: center;
+    margin-top: 1.2rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.certificate-img-placeholder {
+    width: 100%;
+    margin-top: 1.2rem;
+    display: flex;
+    justify-content: center;
+}
+
+.certificate-img-placeholder img {
+    max-width: 180px;
+    max-height: 120px;
+    border-radius: 1rem;
+    box-shadow: 0 .2rem .8rem rgba(0,0,0,0.10);
+    object-fit: contain;
+    background: #f7f7f7;
+    padding: 0.5rem;
 }
 
 /* Skills Section */
@@ -264,6 +317,7 @@ section {
 /* Projects Section */
 .projects {
     background: #f7f7f7;
+    padding-bottom: 4rem; /* Más espacio abajo */
 }
 
 .projects-container {
@@ -454,13 +508,12 @@ section {
 
 /* --- ESTILOS PARA LA LÍNEA DE TIEMPO DE PROYECTOS --- */
 .timeline-projects {
-    padding: 80px 10%;
-    background-color: #f0f4f8; /* Un fondo blanco hueso que complementa */
+    padding: 40px 10% 80px 10%; /* Más espacio abajo (80px) */
+    background-color: #f0f4f8; /* Fondo gris restaurado */
+    min-height: unset; /* Elimina la altura mínima heredada */
 }
-
-.timeline-projects .heading {
-    margin-bottom: 5rem;
-    text-align: center;
+.timeline-container {
+    margin-bottom: 0; /* Asegura que no haya espacio extra */
 }
 
 .timeline-projects .heading span {

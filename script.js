@@ -47,8 +47,7 @@ if (form) {
     });
 }
 
-// Otros scripts de tu página (ej. para la navegación, animaciones, etc.) irían aquí debajo
-// Por ejemplo, si tienes código para el desplazamiento suave de la navegación o animaciones.
+// LINEA DE PROYECTOS
 
 document.addEventListener('DOMContentLoaded', function() {
     // Lógica para los carruseles de las tarjetas de proyectos
